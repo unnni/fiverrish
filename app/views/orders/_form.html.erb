@@ -1,12 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= form_for ([@service, @service.orders.new]) do |f| %>
+    <%= form_for ([@service, @service.orders.new ]) do |f| %>
       <%= f.hidden_field :service_id, value: @service.id %>
       <%= f.hidden_field :price, value: @service.price %>
-      <center>
-        <%= f.submit "Order Now (Rs. #{@service.price})", class: "btn btn-primary btn-lg btn-order" %>
-      </center>
-      <hr>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      
+      
       <h5 class="pull-left">
         Basic Gig Quantity
       </h5>
@@ -16,18 +15,13 @@
             ["1 (Rs. #{@service.price*1})", 1],
             ["2 (Rs. #{@service.price*2})", 2],
             ["3 (Rs. #{@service.price*3})", 3],
-            ["4 (Rs. #{@service.price*4})", 1],
-            ["5 (Rs. #{@service.price*5})", 1] ], {id: "quantity"} ) ) %>
+            ["4 (Rs. #{@service.price*4})", 4],
+            ["5 (Rs. #{@service.price*5})", 5] ], {id: "quantity"} ) ) %>
         </div>
       </div>
+      <center>
+        <%= f.submit "Order Now (Rs. #{@service.price})", class: "btn btn-primary btn-lg btn-order" %>
+      </center>
     <% end %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-     $("select").bind("change",function() {
-       $('.btn-order').html('Order Now - ' + $("select option:selected").html());
-     });
- })
-</script>

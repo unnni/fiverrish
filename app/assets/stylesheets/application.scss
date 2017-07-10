@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets";
+	@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
@@ -89,6 +89,8 @@ select {
 	background-size: cover;
 	height: 500px;
 	text-align: center;
+	width: 100%;
+	
 }
 
 .hero-heading {

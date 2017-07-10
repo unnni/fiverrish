@@ -1,6 +1,7 @@
 class ServicesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_service, only: [:show, :edit, :update]
+  
   def index
     @services = current_user.services
   end
@@ -15,7 +16,7 @@ class ServicesController < ApplicationController
   def create
     # TODO: Save the newly created service. Redirect to an appropriate page if save fails.
     @service = current_user.services.create(service_params)
-    respond_to do |format|
+      respond_to do |format|
       if @service.save
         format.html {redirect_to service_path(@service), notice: "Gig created successfully!"}
         format.json {render :show, status: :created, location: @service }
