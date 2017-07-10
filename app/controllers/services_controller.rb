@@ -33,6 +33,10 @@ class ServicesController < ApplicationController
     # TODO: Save the updated service. Redirect to an appropriate page if save fails.
   end
 
+  def all_services
+    @service = Service.all
+  end
+
   private
   def set_service
     @service = Service.find(params[:id])

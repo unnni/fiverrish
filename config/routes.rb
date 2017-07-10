@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :services
 
+  get 'all_services' , :to => 'services#all_services'
+
   resources :services do
     resources :orders, only: [:create]
   end
