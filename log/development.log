@@ -9450,3 +9450,90 @@ Processing by PagesController#home as HTML
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
   Rendered shared/_navbar.html.erb (2.0ms)
 Completed 200 OK in 53ms (Views: 51.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-07-10 16:57:40 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_navbar.html.erb (6.1ms)
+Completed 200 OK in 4827ms (Views: 4776.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.self-4bf10d9aa5302600ca132b316606b5d8cab038a72d8e482f76077ed5114c95a1.css?body=1" for 127.0.0.1 at 2017-07-10 16:57:45 +0530
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-07-10 16:57:52 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (22.6ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 104ms (Views: 101.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-10 16:58:07 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"doRcPiuLUMfbzo0dEcmDuNGm0x7Cx918VzvhSGJv0+pd0esm698esc21QZ6ijsrmDethCtTEhDgmqtktHsu9/g==", "user"=>{"fullname"=>"Unnikrishnan", "email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "fullname", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["email", "test@test.com"], ["encrypted_password", "$2a$11$XKmGtnuAtgaelgX/7ePvie6.m2m07doO/jibzvpdyy4WHY/zo7nAu"], ["fullname", "Unnikrishnan"], ["created_at", "2017-07-10 11:28:07.530797"], ["updated_at", "2017-07-10 11:28:07.530797"]]
+  [1m[36m (78.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2017-07-10 11:28:07.612255"], ["current_sign_in_at", "2017-07-10 11:28:07.612255"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2017-07-10 11:28:07.613137"], ["id", 2]]
+  [1m[35m (116.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 401ms (ActiveRecord: 197.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-10 16:58:07 +0530
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (5.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered shared/_navbar.html.erb (2.4ms)
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/services/new" for 127.0.0.1 at 2017-07-10 16:58:17 +0530
+Processing by ServicesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered services/_form.html.erb (9.6ms)
+  Rendered services/new.html.erb within layouts/application (11.7ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 176ms (Views: 109.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/services" for 127.0.0.1 at 2017-07-10 16:58:31 +0530
+Processing by ServicesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ngBnINmV040ZCsaqUDFnK6tyR5hBp3WioJ+ulJFX1W21VdA4GcGd+w9xCinjdi51dz/1jFekLObRDpbx7fO7eQ==", "service"=>{"title"=>"Test", "description"=>"Test", "price"=>"500", "requirements"=>"Test", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fd926c6edf8 @tempfile=#<Tempfile:/tmp/RackMultipart20170710-14535-ltm1aa.jpg>, @original_filename="blue_eyes_snakes_razer_1920x1080_wallpaper_Art.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"service[image]\"; filename=\"blue_eyes_snakes_razer_1920x1080_wallpaper_Art.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Publish Gig"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+Command :: file -b --mime '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-1c24e4q.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]'
+Command :: convert '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' -auto-orient -resize "300x300>" '/tmp/ca4c194372737e010d2a6b8baa582a1e20170710-14535-1uq4xb2'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]'
+Command :: convert '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' -auto-orient -resize "230x140" '/tmp/ca4c194372737e010d2a6b8baa582a1e20170710-14535-gnhulh'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]'
+Command :: convert '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-pfmq9i.jpg[0]' -auto-orient -resize "100x100>" '/tmp/ca4c194372737e010d2a6b8baa582a1e20170710-14535-1jolwip'
+Command :: file -b --mime '/tmp/95b9f88a10f33f617d87dbbbb4490ad720170710-14535-1m2d8nk.jpg'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "services" ("title", "description", "price", "requirements", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Test"], ["description", "Test"], ["price", 500], ["requirements", "Test"], ["image_file_name", "blue_eyes_snakes_razer_1920x1080_wallpaper_Art.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 230661], ["image_updated_at", "2017-07-10 11:28:31.208394"], ["user_id", 2], ["created_at", "2017-07-10 11:28:31.610066"], ["updated_at", "2017-07-10 11:28:31.610066"]]
+  [1m[35m (98.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/services/3
+Completed 302 Found in 523ms (ActiveRecord: 99.3ms)
+
+
+Started GET "/services/3" for 127.0.0.1 at 2017-07-10 16:58:31 +0530
+Processing by ServicesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mService Load (0.2ms)[0m  [1mSELECT  "services".* FROM "services" WHERE "services"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered orders/_form.html.erb (10.5ms)
+  Rendered services/show.html.erb within layouts/application (12.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered shared/_navbar.html.erb (1.5ms)
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.5ms)
