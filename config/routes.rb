@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :services do
     resources :orders, only: [:create]
   end
-
+  
   resources :orders, only: [:show]
+
+  resource :charges
 
   get '/user_orders' => 'orders#user_orders'
 

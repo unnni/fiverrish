@@ -16,33 +16,12 @@
 		<hr>
 		<%= "Total: Rs.#{@orders.total_price} " %>
 	</div>
-   </div>
+   
 
-   <div class="col-md-6">
-   	<div class="panel-heading">
-        <center>
-		<h2> Payment Details </h2></center>
-	</div>
-	<div class="panel-body">
-	<div class="row">
- 		 <div class="col-md-8">
-		<div class ="form-group" >
-			<%= label_tag :card_number, "Credit Card Number" %>
-			<%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number" , class: "form-control"} %>
-		</div></div>
-  			<div class="col-md-4">
-		<div class ="form-group" >
-			<%= label_tag :card_code, "CVC" %>
-			<%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc" , class: "form-control"} %>
-		</div></div></div>
-		<%= label_tag nil,"Expiry Date" %>
-		<div class ="form-group" >
-		
-			<%= select_month nil,{ user_two_digit_numbers: true},{ :name => nil, :'data-stripe' => "exp-month" } %>
-			
-			<%= select_year nil,{ start_year: Date.today.year, end_year: Date.today.year+15 },{ :name => nil, :'data-stripe' => "exp-year" } %>
-		</div>
-		<div class = "form-group" >
-			<%= submit_tag "Make Payment", class: "btn" %>
-		</div>
+   
+
+	<%= link_to '<button type="button">Make Payment</button>'.html_safe, new_charges_path(@orders) %>
+</div>
+</div>
+
 </div>

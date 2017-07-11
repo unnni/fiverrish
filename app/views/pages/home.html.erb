@@ -1,3 +1,4 @@
+
 <div class="hero">
   <div class="container">
     <div class="row">
@@ -28,49 +29,20 @@
     Newest Gigs
   </h1>
   <div class="row">
+  <% @services.each do |service| %>
     <div class="col-md-3">
       <div class="gig-card">
-        <%= image_tag 'blog.jpg'%>
-        <h4>
-          I will write 300 word blog posts
-        </h4>
+        <%= image_tag service.image.url(:small)%>
         <h3>
-          Rs. 500
+          <%= service.title %><br>by
+          <%= service.user.fullname %>
         </h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'data.jpg'%>
         <h4>
-          I will be your virtual assistant for data entry
+          <%= service.description %><br>
+          Rs.<%= service.price %>
         </h4>
-        <h3>
-          Rs. 500
-        </h3>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'copywrite.jpg'%>
-        <h4>
-          I will copywrite for your website
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'lyrics.jpg'%>
-        <h4>
-          I will write a song for your lyrics
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
-      </div>
+    <% end %>
     </div>
   </div>
-</div>

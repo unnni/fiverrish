@@ -82,14 +82,14 @@ select {
 }
 
 .hero {
-	background: image-url('header-bg.jpg') no-repeat center center fixed;
+	background: image-url('header-bg.jpg') center no-repeat ;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;
+	-background-size: cover;
 	height: 500px;
 	text-align: center;
-	width: 100%;
+	width: auto;
 	
 }
 
@@ -157,4 +157,8 @@ select {
 	color: #ccc;
 	transform: scale(0.84, 0.42);
 	pointer-events:none;
+}
+
+.container-fluid{
+	width : 100%;
 }
