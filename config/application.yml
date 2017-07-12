@@ -12,3 +12,7 @@
 
 stripe_api_key: "sk_test_GLP6fewWykch5XVbDszgg9RV"
 stripe_publishable_key: "pk_test_dymFpuOVk9Q2X6cjjq0gzfGw"
+
+aws_access_key_id: 'AKIAIUFB52FCZGKWPCJQ'
+aws_secret_access_key: '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'
+s3_region: 'ap-south-1'

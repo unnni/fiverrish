@@ -2,7 +2,21 @@ class Service < ActiveRecord::Base
   belongs_to :user
   has_many :orders
 
-  has_attached_file :image, styles: {medium: "300x300>", small: "230x140", thumb:"100x100>"}
+  has_attached_file :image,
+    storage: :s3,
+    s3_credentials: {
+      access_key_id: ENV["aws_access_key_id"],
+      secret_access_key: ENV["aws_secret_access_key"],
+      bucket: "fiverrish-production"
+    },
+    s3_region: "ap-south-1",
+    path: "image/:attachment/:id/:style/:filename",
+    url: ":s3_domain_url",
+    styles: { 
+      small: "100x100#",
+      medium: "220x220#"
+     },
+    default_url: "400x400.png"
 
   validates :title, presence: true, length: {maximum:80}
   validates :description, presence: true, length: {maximum:1200}
