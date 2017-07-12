@@ -1,12 +1,12 @@
 class ChargesController < ApplicationController
-	before_action :set_order, only: [:create]
 
+	Stripe.api_key = ENV['stripe_api_key']
 	def new
 	end
 
 	def create
 	  # Amount in cents
-
+	  @orders = Order.find(params[:order_id])
 	  @amount = @orders.total_price
 
 	  customer = Stripe::Customer.create(
@@ -28,14 +28,4 @@ class ChargesController < ApplicationController
 
 	 def show
 	 end
-	  
-
-	private
-		def set_order
-      		@orders = Order.find(params[:id])
-    	end
-
-    	def order_params
-  			params.require(:order).permit(:id ,:service_id, :price, :quantity, :user_id)
-  		end
 end
