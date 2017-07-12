@@ -16,11 +16,14 @@
 		<hr>
 		<%= "Total: Rs.#{@orders.total_price} " %>
 	</div>
+
 	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 	data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
 	data-description="<%= @orders.service.title %>"
-	data-amount="<%= @orders.total_price %>"
-	data-locale="auto"></script>
+	data-amount="<%= @orders.total_price*100 %>"
+	data-locale="auto"
+	data-currency="INR">
+	</script>
 </div>
 </div>
 
